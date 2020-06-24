@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+commit_regex='^#\d*\:\s.*(Story|Bug|Task|Issue|feat|fix|refactor|test|style|doc|revert|TCase|TPlan|Tsuite|bugfix)\s\:\s.*\s\:\s'
+test "" = "$(grep "${commit_regex}" "$1")" && {
+   echo >&2 "******  Start the commit message with a # character followed by the task!"
+   
+    echo >&2 " Example : 
+    git commit -m "#workitemnumber - Description"
+    git commit -m "#23423: Bug : Payroll : Layout is off for submit button on the Payroll screen.""
+   exit 1
+}
